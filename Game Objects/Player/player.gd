@@ -8,6 +8,9 @@ const FALL_GRAVITY = 2000
 
 var can_jump: bool = false
 
+func _ready() -> void:
+	GameManager.player = self
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -30,7 +33,6 @@ func _physics_process(delta: float) -> void:
 		elif $"%Jump Buffer Timer".is_stopped(): $"%Jump Buffer Timer".start()
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED

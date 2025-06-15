@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://74yjchkgrq0k"]
+
+[ext_resource type="Script" uid="uid://bdene6oiag5wc" path="res://Game Objects/Sec_Camera/sec_camera.gd" id="1_xtovo"]
+
+[node name="Sec Camera" type="Area2D" groups=["camera"]]
+monitorable = false
+script = ExtResource("1_xtovo")
+
+[node name="View" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 64, 192, -64, 192)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

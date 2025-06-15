@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsuq5rwmhyg55"]
 
-[ext_resource type="Script" uid="uid://cgamci3aw6gwt" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cgamci3aw6gwt" path="res://Game Objects/Player/player.gd" id="1_v0iea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(4, 4)
 script = ExtResource("1_v0iea")
 
