@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxacgmt4yjxu3"]
+
+[ext_resource type="Theme" uid="uid://bw5u7synqw132" path="res://UI/ui_theme.tres" id="1_827kd"]
+[ext_resource type="Texture2D" uid="uid://dppskmm15u66g" path="res://Textures/pause-button.svg" id="2_moopr"]
+[ext_resource type="Texture2D" uid="uid://ca8a435ucn3m3" path="res://Textures/anticlockwise-rotation.svg" id="3_85ewa"]
+[ext_resource type="PackedScene" uid="uid://c7rytuxomqj0g" path="res://UI/spy_phone.tscn" id="4_moopr"]
+[ext_resource type="Script" uid="uid://d0k4p1jkyxgsg" path="res://UI/ui_animations.gd" id="5_85ewa"]
+
+[sub_resource type="Animation" id="Animation_id740"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spy Phone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(153, 618)]
+}
+
+[sub_resource type="Animation" id="Animation_827kd"]
+resource_name = "phone_hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spy Phone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(153, 618), Vector2(153, 265)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjl4j"]
+_data = {
+&"RESET": SubResource("Animation_id740"),
+&"phone_hover": SubResource("Animation_827kd")
+}
+
+[node name="Level UI" type="CanvasLayer"]
+
+[node name="Level Controls" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -88.0
+offset_right = -21.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_827kd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_827kd")
+
+[node name="Pause" type="TextureButton" parent="Level Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_moopr")
+texture_pressed = ExtResource("2_moopr")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Retry" type="TextureButton" parent="Level Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_85ewa")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Spy Phone" parent="." instance=ExtResource("4_moopr")]
+anchor_left = 0.132812
+anchor_top = 0.953704
+anchor_right = 0.320312
+anchor_bottom = 1.48457
+offset_left = 0.000579834
+offset_top = -0.000183105
+offset_right = 0.000579834
+offset_bottom = -0.000183105
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hjl4j")
+}
+script = ExtResource("5_85ewa")
+
+[connection signal="focus_entered" from="Spy Phone" to="AnimationPlayer" method="_on_spy_phone_focus_entered"]
+[connection signal="focus_exited" from="Spy Phone" to="AnimationPlayer" method="_on_spy_phone_focus_exited"]

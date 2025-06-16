@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7rytuxomqj0g"]
+
+[ext_resource type="Script" uid="uid://bobxg4nqf1j5u" path="res://UI/spy_phone.gd" id="1_jc8b6"]
+[ext_resource type="Texture2D" uid="uid://dvmmyimdng7gf" path="res://Textures/money-stack.svg" id="2_oduhu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0onl"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jc8b6"]
+bg_color = Color(0.439216, 0.592157, 0.458824, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q57d"]
+bg_color = Color(0.254902, 0.364706, 0.262745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0666667, 0.113725, 0.0745098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oduhu"]
+bg_color = Color(0.170012, 0.179586, 0.171161, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Spy Phone" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.13491
+anchor_bottom = 0.393037
+offset_right = 60.5837
+offset_bottom = 89.313
+size_flags_horizontal = 4
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_o0onl")
+script = ExtResource("1_jc8b6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Screen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 19.0
+offset_right = -12.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jc8b6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Items" type="VBoxContainer" parent="Screen/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.557084
+anchor_top = 0.0256369
+anchor_right = 0.96896
+anchor_bottom = 0.117595
+offset_left = 0.0399475
+offset_top = -0.0499997
+offset_right = -0.0402756
+offset_bottom = 0.0750027
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8q57d")
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="Screen/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -11.5
+offset_right = -2.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "$ 500"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Screen/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -8.5
+offset_right = 22.0
+offset_bottom = 9.5
+grow_vertical = 2
+texture = ExtResource("2_oduhu")
+expand_mode = 1
+
+[node name="Cam" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = 5.0
+offset_right = 20.5
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oduhu")
